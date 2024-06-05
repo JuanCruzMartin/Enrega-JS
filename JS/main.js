@@ -11,11 +11,42 @@ if (mailUsuario === null){
   
 }
  console.log (mailUsuario)
-const TopUsuario = prompt ("Escriba su libro preferido, en caso de no tener uno que le recomendaria a la gente ");
-if (TopUsuario === null ){
-    mensajeDespedida();
+
+
+class librosCargados{
+    static id = 0
+    constructor ( titulo, autor, editorial){
+    this.id = ++librosCargados.id
+    this.titulo = titulo;
+    this.autor = autor;
+    this.editorial = editorial;}
 }
-console.log (TopUsuario)
+const Libros = []
+cargarLibro = () => {
+    let cargarTitulo = prompt("Ingrese titulo de su  libro preferido ")
+    let cargarAutor = prompt (" Ingrese el Autor de su libro")
+    let cargarEditorial = prompt ("Ingrese el nombre de la editorial del libro")
+    const libro = new librosCargados(cargarTitulo,cargarAutor,cargarEditorial)
+    
+    Libros.push(libro)
+    console.log (libro)
+    console.log(Libros)
+}
+/* cargarLibro() */
+
+let menu = parseInt (prompt("Elija 1 para cargar un libro que le guste! o 2 para seguir adelante!"))
+while (menu !==2){
+    switch(menu){
+        case 1:
+            cargarLibro()
+            break
+        default:
+            alert("opcion incorrecta")
+            break
+    }
+    menu = parseInt (prompt ("Elija 1 para cargar un libro que le guste! o 2 para seguir adelante!"))
+}
+
 let pregunta1 = prompt("¿que tipo de lectura te gusta: filosofia , novelas, historicas, fantasia , otras")
 switch (pregunta1){
     case "filosofia":
